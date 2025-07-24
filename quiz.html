@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>5-Question Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simple 5-Question Quiz</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <label>1. What is the capital of France?</label>
+      <input type="text" name="q1">
+    </div>
+
+    <div class="question">
+      <label>2. What is 5 + 7?</label>
+      <input type="text" name="q2">
+    </div>
+
+    <div class="question">
+      <label>3. What is the largest planet?</label>
+      <input type="text" name="q3">
+    </div>
+
+    <div class="question">
+      <label>4. What color do you get when you mix red and white?</label>
+      <input type="text" name="q4">
+    </div>
+
+    <div class="question">
+      <label>5. What is the boiling point of water in Celsius?</label>
+      <input type="text" name="q5">
+    </div>
+
+    <button type="button" onclick="gradeQuiz()">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function gradeQuiz() {
+      const answers = ["paris", "12", "jupiter", "pink", "100"];
+      const form = document.getElementById('quizForm');
+      let score = 0;
+
+      for (let i = 0; i < answers.length; i++) {
+        const userAnswer = form[`q${i+1}`].value.trim().toLowerCase();
+        if (userAnswer === answers[i]) {
+          score++;
+        }
+      }
+
+      document.getElementById('result').textContent = `You got ${score} out of 5 correct.`;
+    }
+  </script>
+
+</body>
+</html>
